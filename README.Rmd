@@ -1,0 +1,77 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+<!-- `devtools::build_readme()` -->
+
+# degreedays
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of degreedays is to download heating degree days from weather stations
+throughout Germany from DWD Climate Data Center (CDC) and provide some
+convenience functions.
+
+Data set description:
+
+Recent monthly degree days according to VDI 3807 for Germany, quality
+control not completed yet, version v19.3, last accessed: 2021-12-02.
+
+More information may be found on the [opendata-server](https://opendata.dwd.de/climate_environment/CDC/derived_germany/techn/monthly/heating_degreedays/hdd_3807/recent/DESCRIPTION_derivgermany_techn_monthly_heating_degreedays_hdd_3807_recent_en.pdf).
+
+
+## Installation
+
+You can install the development version of degreedays from GitHub.
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("BirgerNi/degreedays")
+```
+
+
+## Usage
+
+You can download the whole data set with `download_dwd_data`.
+
+```{r example, eval = FALSE}
+library(degreedays)
+df <- download_dwd_data()
+df
+```
+
+```{r, echo=FALSE}
+library(magrittr)
+library(degreedays)
+df <- readr::read_rds(file = "data_test/dwd.rds")
+df
+```
+
+
+You may want to convert data to tsibble and keep only complete or almost complete data sets.
+
+```{r}
+tidy_hdd(df, threshold = 0.95)
+```
+
+
+Calculate the monthly mean for a given period with `calc_monthly_mean()`.
+
+```{r}
+df %>%
+  tidy_hdd(threshold = 0.95) %>%
+  calc_monthly_mean(from = 2006, to = 2020)
+```
+
