@@ -4,9 +4,9 @@ Title: Returns monthly degree days from DWD for locations in Germany
 Version: 0.2.0
 Authors@R: person("Birger", "Niklas", role = c("aut", "cre"),
            email = "birger.niklas@posteo.de")
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: download heating degree days from weather stations throughout 
+    Germany from DWD Climate Data Center (CDC) and provide some convenience 
+    functions.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
