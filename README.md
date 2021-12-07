@@ -5,6 +5,8 @@
 # degreedays
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/BirgerNi/degreedays/workflows/R-CMD-check/badge.svg)](https://github.com/BirgerNi/degreedays/actions)
 <!-- badges: end -->
 
 The goal of degreedays is to download heating degree days from weather
