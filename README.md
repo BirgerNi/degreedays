@@ -7,6 +7,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/BirgerNi/degreedays/workflows/R-CMD-check/badge.svg)](https://github.com/BirgerNi/degreedays/actions)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of degreedays is to download heating degree days from weather
