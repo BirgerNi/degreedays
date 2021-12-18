@@ -7,7 +7,7 @@
 #' @import dplyr
 #' @import rvest
 get_dwd_url <- function() {
-  url_base <- "https://opendata.dwd.de/climate_environment/CDC/derived_germany/techn/monthly/heating_degreedays/hdd_3807/"
+  url_base <- "https://opendata.dwd.de/climate_environment/CDC/derived_germany/techn/monthly/heating_degreedays/hdd_3807/" # nolint
 
   url_files_historical <- read_html(paste0(url_base, "historical/")) %>%
     html_elements("a") %>%
@@ -69,7 +69,8 @@ download_dwd_data <- function() {
 #' * keep only stations with sufficient data (completeness ≥ threshold)
 #'
 #' @param df_hdd dataframe from function get_montly_hdd
-#' @param threshold keep only stations with sufficient data (completeness ≥ threshold)
+#' @param threshold keep only stations with sufficient data (completeness ≥
+#'   threshold)
 #'
 #' @importFrom magrittr %>%
 #' @import dplyr
@@ -84,7 +85,7 @@ tidy_hdd <- function(df_hdd, threshold = 0.95) {
     group_by_key() %>%
     mutate(n = n()) %>%
     ungroup() %>%
-    filter(n >= threshold*max(n)) %>%
+    filter(n >= threshold * max(n)) %>%
     select(-n)
 }
 
@@ -110,6 +111,6 @@ calc_monthly_mean <- function(df_hdd, from = 2011, to = 2020) {
     mutate(month = month(year_month)) %>%
     as_tibble() %>%
     group_by(id, station, month) %>%
-    summarise(monthly_mean = mean(monthly_degree_days), .groups = 'keep') %>%
+    summarise(monthly_mean = mean(monthly_degree_days), .groups = "keep") %>%
     ungroup()
 }
